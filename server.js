@@ -6,7 +6,8 @@ const app = express()
 // * for dummy commit 2
 app.get('/', (req, res) => {
   res.status(200).json({
-    message : "hello world"
+    status: 200,
+    message : "Hello world change 2"
   })
 })
 
