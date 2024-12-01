@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+    
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Login docker hub
+      env: 
+        DOCKER_USERNAME: ${{secrect.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrect.DOCKER_PASSWORD}}
+      run: docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD
+      
+    - name: Build the Docker image
+      run: docker build . cicd-pipeline .
+
+    - name: Push to docker hub
+      run:  docker push arun0kb/cicd-pipeline:latest
