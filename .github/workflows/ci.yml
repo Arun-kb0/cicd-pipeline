@@ -14,8 +14,8 @@ jobs:
     - uses: actions/checkout@v4
     - name: Login docker hub
       env: 
-        DOCKER_USERNAME: ${{secrect.DOCKER_USERNAME}}
-        DOCKER_PASSWORD: ${{secrect.DOCKER_PASSWORD}}
+        DOCKER_USERNAME: ${{secret.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secret.DOCKER_PASSWORD}}
       run: docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD
       
     - name: Build the Docker image
